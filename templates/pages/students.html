@@ -1,0 +1,28 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Hide Navbar on Scroll Down</title>
+      <link rel="stylesheet" href="{% static 'css/students.css' %}">
+      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+   </head>
+   <body>
+      <nav dir="rtl">
+         <label> أسماء الطلاب المتقدمين على المفاضلة</label>
+         
+      </nav>
+      <div  class="content">
+       {% for x in namestudents %}
+        <h2>{{x.name}} {{x.ratio}}</h2>
+    
+       {% endfor %}
+       </div>
+       <script src="{% static 'js/students.js' %}"></script>
+   </body>
+</html>
+
+
+{% endblock content %}

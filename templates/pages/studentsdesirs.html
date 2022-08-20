@@ -1,0 +1,33 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Hide Navbar on Scroll Down</title>
+      <link rel="stylesheet" href="{% static 'css/studentsdesirs.css' %}">
+      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+   </head>
+   <body>
+      <nav dir="rtl">
+         <label> رغبات الطلاب المتقدمين على المفاضلة</label>
+         
+      </nav>
+      <div  class="content">
+       {% for x in wishlists %}
+        <h2>{{x.name}} {{x.ratio}}</h2>
+        <h2>{{x.firstwish}}</h2>
+        <h2>{{x.secondwish}}</h2>
+        <h2>{{x.thirdwish}}</h2>
+        <h2>{{x.fourthwish}}</h2>
+        <br>
+    
+       {% endfor %}
+       </div>
+       <script src="{% static 'js/studentsdesirs.js' %}"></script>
+   </body>
+</html>
+
+
+{% endblock content %}

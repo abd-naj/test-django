@@ -1,0 +1,80 @@
+{% extends "dashboard.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <link rel="stylesheet"  href="{% static 'css/personal.css' %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">المعلومات الشخصية</div>
+    <div class="content">
+      <form action="#" method="POST">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">الاسم</span>
+            <input type="text" name="name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">مكان الولادة</span>
+            <input type="text" name="placeofpirth" required>
+          </div>
+       
+          <div class="input-box">
+            <span class="details">النسبة</span>
+            <input type="text" name="ratio" required>
+          </div>
+          <div class="input-box">
+            <span class="details">تاريخ الولادة</span>
+            <input type="date" name="dataofbirth" required>
+          </div>
+       
+          <div class="input-box">
+            <span class="details">اسم الاب ونسبته</span>
+            <input type="text" name="namefather" required>
+          </div>
+          <div class="input-box">
+            <label class="choose">الجنس</label>
+            <div>
+              <select class="input-choose" name="gender" required>
+                <option> </option>
+                <option value="male">ذكر</option>
+                <option value="female">أنثى</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-box">
+            <span class="details">اسم الام ونسبتها</span>
+            <input type="text" name="mothername" required>
+          </div>
+          <div class="input-box">
+            <label class="choose">الحالة الاجتماعية</label>
+            <div>
+              <select class="input-choose" name="status" required>
+                <option> </option>
+                <option value="singel">عازب</option>
+                <option value="married">متزوج</option>
+              </select>
+            </div>
+          </div>
+       
+        </div>
+         
+        <div class="button">
+          <input type="submit" name="submit" value="التالي"  onclick="document.location = '/contact' ">
+        </div>
+        
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
+
+{% endblock content %}

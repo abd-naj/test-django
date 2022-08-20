@@ -1,0 +1,170 @@
+{% extends "dashboard.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<!-- Designined by CodingLab - youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body >
+  <div class="container">
+    <div class="title">تحديد الرغبات</div>
+    <div class="content">
+      <form action="#" method="POST">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">الاسم</span>
+            <input type="text" name="name" required>
+          </div>
+          
+         
+          <!--
+          <div class="input-box">
+            <span class="details">الرغبة الاولى</span>
+            <input type="text" placeholder="Enter your username " required>
+          </div>
+        -->
+          <div class="input-box">
+            <span class="details">مكان الولادة</span>
+            <input type="text" name="placeofbirth" required>
+          </div>
+          <div class="input-box">
+            <label class="choose">الرغبة الأولى</label>
+            <div>
+              <select class="input-choose" name="firstwish" required>
+                <option> </option>
+                <option value="medicine">طب بشري</option>
+                <option value="dentistry">طب أسنان</option>
+                <option value="pharmacy">صيدلة</option>
+                <option value="informatics engineering">هندسة معلوماتية</option>
+                <option value="architecture">هندسة عمارة</option>
+                <option value="mechetronics engineering">هندسة ميكترونيك</option>
+                <option value="female">تجارة و اقتصاد</option>
+              </select>
+            </div>
+         </div>
+          <div class="input-box">
+          <span class="details">النسبة</span>
+          <input type="text" name="ratio" required>
+        </div>  
+         
+          
+          <div class="input-box">
+            <span class="details">تاريخ الولادة</span>
+            <input type="date" name="dateofbirth" required>
+          </div>
+          <div class="input-box">
+            <label class="choose">الرغبة الثانية</label>
+            <div>
+              <select class="input-choose" name="secondwish" required>
+                <option> </option>
+                <option value="medicine">طب بشري</option>
+                <option value="dentistry">طب أسنان</option>
+                <option value="pharmacy">صيدلة</option>
+                <option value="informatics engineering">هندسة معلوماتية</option>
+                <option value="architecture">هندسة عمارة</option>
+                <option value="mechetronics engineering">هندسة ميكترونيك</option>
+                <option value="trade and economy">تجارة و اقتصاد</option>
+              </select>
+            </div>
+          </div>
+           <div class="input-box">
+            <span class="details">اسم الاب ونسبته</span>
+            <input type="text" name="fathersnameandlineage" required>
+          </div>
+          
+          
+          <div class="input-box">
+            <label class="choose">الجنس</label>
+            <div>
+              <select class="input-choose" name="gender" required>
+                <option> </option>
+                <option value="male">ذكر</option>
+                <option value="female">أنثى</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-box">
+            <label class="choose">الرغبة الثالثة</label>
+            <div>
+              <select class="input-choose" name="thirdwish" required>
+                <option> </option>
+                <option value="medicine">طب بشري</option>
+                <option value="dentistry">طب أسنان</option>
+                <option value="pharmacy">صيدلة</option>
+                <option value="informatics engineering">هندسة معلوماتية</option>
+                <option value="architecture">هندسة عمارة</option>
+                <option value="mechetronics engineering">هندسة ميكترونيك</option>
+                <option value="trade and economy">تجارة و اقتصاد</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-box">
+            <span class="details">اسم الام ونسبتها</span>
+            <input type="text" name="mothersnameandlineage" required>
+          </div>
+          <div class="input-box">
+            <label class="choose">الحالة الاجتماعية</label>
+            <div>
+              <select class="input-choose" name="status" required>
+                <option> </option>
+                <option value="single">عازب</option>
+                <option value="married">متزوج</option>
+              </select>
+            </div>
+          </div>
+         
+          <div class="input-box">
+            <label class="choose">الرغبة الرابعة</label>
+            <div>
+              <select class="input-choose" name="fourthwish" required>
+                <option> </option>
+                <option value="medicine">طب بشري</option>
+                <option value="dentistry">طب أسنان</option>
+                <option value="pharmacy">صيدلة</option>
+                <option value="informatics engineering">هندسة معلوماتية</option>
+                <option value="architecture">هندسة عمارة</option>
+                <option value="mechetronics engineering">هندسة ميكترونيك</option>
+                <option value="trade and economy">تجارة و اقتصاد</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!--
+        <div class="gender-details">
+          <input type="radio" name="gender" id="dot-1">
+          <input type="radio" name="gender" id="dot-2">
+          <input type="radio" name="gender" id="dot-3">
+          <span class="gender-title">Gender</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Male</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Female</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Prefer not to say</span>
+            </label>
+          </div>
+        </div>
+        -->
+        <div class="button">
+          <input type="submit" value="إرسال">
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</body>
+</html>
+
+{% endblock content %}

@@ -1,0 +1,70 @@
+{% extends "dashboard.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive  </title>
+    <link rel="stylesheet" href="{% static 'css/academy.css' %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">المعلومات الأكاديمية</div>
+    <div class="content">
+      <form action="#" method="POST">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details" >اسم المدرسة الابتدائية </span>
+            <input type="text" name="elementaryschool" required>
+          </div>
+          <div class="input-box">
+            <span class="details">تاريخ إصدار الشهادة</span>
+            <input type="date" name="certificatedate" required>
+          </div>
+          <div class="input-box">
+            <span class="details">اسم المدرسة الإعدادية</span>
+            <input type="text" name="preparatoryschool"  required>
+          </div>
+          <div class="input-box">
+            <span class="details">المعدل</span>
+            <input type="number" name="modified" required>
+          </div>
+          <div class="input-box">
+            <span class="details">اسم المدرسة الثانوية</span>
+            <input type="text" name="highschool" required>
+          </div>
+
+        </div>
+        <div class="gender-details">
+          <input type="radio" name="certificatesource" value="temporary goverment" id="dot-1">
+          <input type="radio" name="certificatesource" value="rescue goverment" id="dot-2">
+          <input type="radio" name="certificatesource" value="local council" id="dot-3">
+          <span class="gender-title">مصدر الشهادة</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">حكومة مؤقتة</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">حكومة إنقاذ</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">مجلس محلي</span>
+            </label>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="التالي" onclick="document.location = '/studentsdesirs'">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
+{% endblock content %}
