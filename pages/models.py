@@ -87,18 +87,16 @@ class Wishlist(models.Model):
     class Meta:
         verbose_name='determine desire'
     
+# class Document(models.Model):
+#     imgper = models.ImageField(upload_to='personalPhoto/%y/%m/%d' ,verbose_name='صورة شخصية' ,null=False)
+#     imgid = models.ImageField(upload_to='idPhotos/%y/%m/%d' ,verbose_name='صورة الهوية' ,null=False)
+#     imgcer = models.ImageField(upload_to='certificatePhotos/%y/%m/%d' ,verbose_name='صورة الشهادة' ,null=False)
+#
+#     class Meta:
+#         verbose_name='select document'
+
 class Document(models.Model):
-    imgper = models.ImageField(upload_to='personalPhoto/%y/%m/%d' ,verbose_name='صورة شخصية' ,null=False)
-    imgid = models.ImageField(upload_to='idPhotos/%y/%m/%d' ,verbose_name='صورة الهوية' ,null=False)
-    imgcer = models.ImageField(upload_to='certificatePhotos/%y/%m/%d' ,verbose_name='صورة الشهادة' ,null=False)
-    
-    class Meta:
-        verbose_name='select document'
-
-
-class UploadImage(models.Model):
-    caption = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='images')
-
-    def __str__(self):
-        return self.caption
+    # document = models.CharField(max_length=50)
+        imgper = models.ImageField(upload_to='personalPhoto/%y/%m/%d', verbose_name='صورة شخصية', null=False)
+        imgid = models.ImageField(upload_to='idPhotos/%y/%m/%d' ,verbose_name='صورة الهوية' ,null=False)
+        imgcer = models.ImageField(upload_to='certificatePhotos/%y/%m/%d' ,verbose_name='صورة الشهادة' ,null=False)

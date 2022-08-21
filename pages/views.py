@@ -1,7 +1,10 @@
 import logging
 
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .models import Login ,Personal ,Contact ,Academy ,Wishlist ,Document
+
+from .forms import  HotelForm
+from .models import Login, Personal, Contact, Academy, Wishlist, Document
 
 # Create your views here.
 logger = logging.getLogger('app_api')  # from LOGGING.loggers in settings.py
@@ -49,15 +52,15 @@ def academy(request):
         data.save()
     return render(request, "pages/academy.html")
 
-def document(request):
-    if request.method=="POST":
-        imgper = request.POST.get('imgper')
-        imgid = request.POST.get('imgid')
-        imgcer = request.POST.get('imgcer')
-        data = Document(imgper=imgper ,imgid=imgid ,imgcer=imgcer)
-        data.save()
-
-    return render(request, "pages/document.html")
+# def document(request):
+#     if request.method=="POST":
+#         imgper = request.POST.get('imgper')
+#         imgid = request.POST.get('imgid')
+#         imgcer = request.POST.get('imgcer')
+#         data = Document(imgper=imgper ,imgid=imgid ,imgcer=imgcer)
+#         data.save()
+#
+#     return render(request, "pages/document.html")
 
 def wishlist(request):
     if request.method=="POST":
@@ -94,3 +97,19 @@ def students(request):
 def studentsdesirs(request):
 
     return render(request, 'pages/studentsdesirs.html',  {'wishlists':Wishlist.objects.all()})
+
+# Create your views here.
+def document(request):
+    if request.method == 'POST':
+        form = HotelForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('document')
+    else:
+        form = HotelForm()
+    return render(request, 'pages/document.html', {'form': form})
+
+
+def success(request):
+    return HttpResponse('successfully uploaded')

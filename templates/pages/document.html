@@ -1,64 +1,20 @@
-{% extends "dashboard.html" %}
-{% load static %}
-{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>upload images</title>
-    <link rel="stylesheet" href="{% static 'css/document.css' %}">
+    <title>Hotel_image</title>
 </head>
 <body>
-  <form action="#" method="POST">
-    {% csrf_token %}
-<div class="form">
-    <div class="grid">
-      <div class="box">
-        <h3 dir="rtl">صورة عن الشهادة</h3>
-        <br>
-      <div class="form-element">
-        <input type="file" id="file-1" name="imgper" accept="image/*">
-        <label for="file-1" id="file-1-preview">
-          <img src="{% static 'image/profile.jpg' %}" alt="">
-          <div>
-            <span>+</span>
-          </div>
-       </label>
-      </div>
-    </div>
-      <div class="box">
-        <h3 dir="rtl">صورة عن الهوية</h3>
-        <br>
-      <div class="form-element">
-        <input type="file" id="file-2" name="imgid" accept="image/*">
-        <label for="file-2" id="file-2-preview">
-          <img src="{% static 'image/profile.jpg' %}" alt="">
-          <div>
-            <span>+</span>
-          </div>
-        </label>
-      </div>
-    </div>
-      <div class="box">
-        <h3 dir="rtl">صورة شخصية</h3>
-        <br>
-      <div class="form-element">
-        <input type="file" id="file-3" name="imgcer" accept="image/*">
-        <label for="file-3" id="file-3-preview">
-          <img src="{% static 'image/profile.jpg' %}" alt="">
-          <div>
-            <span>+</span>
-          </div>
-        </label>
-      </div>
-    </div>
-    </div>
-  </div>
-      <div class="button">
-          <input type="submit" value="save images">
-        </div>
-</form> 
-  <script src="{% static 'js/document.js' %}"></script>
+    <form method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+ {% for hotel in hotel_images %}
+            <div class="col-md-4">
+                    {{ hotel.name }}
+                     <img src="{{ hotel.hotel_Main_Img.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+            </div>
+    {% endfor %}
 </body>
 </html>
-{% endblock content %}
