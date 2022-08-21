@@ -2,30 +2,67 @@
 {% load static %}
 {% block content %}
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title> Responsive  </title>
-    <link rel="stylesheet" href="{% static 'css/academy.css' %}">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+    <title>upload images</title>
+    <link rel="stylesheet" href="{% static 'css/document.css' %}">
+</head>
 <body>
+<div class="form">
+     <div class="grid">
+      <div class="box">
+        <h3 dir="rtl">صورة عن الشهادة</h3>
+        <br>
+      <div class="form-element">
+{#        <input type="file" id="file-1" name="imgper" accept="image/*">#}
+        <label for="file-1" id="file-1-preview">
+          <img id="id_imgper_img" src="{% static 'image/profile.jpg'%}" alt="">
+          <div>
+            <span>+</span>
+          </div>
+       </label>
+      </div>
+    </div>
+      <div class="box">
+        <h3 dir="rtl">صورة عن الهوية</h3>
+        <br>
+      <div class="form-element">
+{#        <input type="file" id="file-2" name="imgid" accept="image/*">#}
+        <label for="file-2" id="file-2-preview">
+          <img id="id_imgid_img" src="{% static 'image/profile.jpg'%}" alt="">
+          <div>
+            <span>+</span>
+          </div>
+        </label>
+      </div>
+    </div>
+      <div class="box">
+        <h3 dir="rtl">صورة شخصية</h3>
+        <br>
+      <div class="form-element">
+{#        <input type="file" id="file-3" name="imgcer" accept="image/*">#}
+        <label for="file-3" id="file-3-preview">
+          <img id="id_imgcer_img" src="{% static 'image/profile.jpg'%}" alt="">
+          <div>
+            <span>+</span>
+          </div>
+        </label>
+      </div>
+    </div>
+    </div>
     <form method = "post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload</button>
+        <div style="margin-top: 20px;display: flex;place-content: space-between;align-items: center;flex-flow: row;    padding-left: 50px;">
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit" style="width: 150px; margin-top: 40px; background: #1d1055; padding: 5px; border-radius: 4px; display: block; margin: auto; margin-top: 40px"><span style="color: white">Upload</span></button>
     </form>
-   <div class="col-md-4">
-       <img id="id_imgper_img" src="{% static ''%}{{ images.id_imgper }}" class="img-responsive" style="width: 200px; float: left; margin-right: 10px;" />
-       <img id="id_imgid_img" src="{% static ''%}{{ images.id_imgid }}" class="img-responsive" style="width: 200px; float: left; margin-right: 10px;" />
-       <img id="id_imgcer_img" src="{% static ''%}{{ images.id_imgcer }}" class="img-responsive" style="width: 200px; float: left; margin-right: 10px;" />
-   </div>
+</div>
 <script>
-    let id_imgper = 'image/profile.jpg';
-    let id_imgid = 'image/profile.jpg';
-    let id_imgcer = 'image/profile.jpg';
-    const images = {id_imgper: 'image/profile.jpg', id_imgid: 'image/profile.jpg', id_imgcer: 'image/profile.jpg'};
-    console.log(id_imgper)
+
+    const images = {};
     function previewBeforeUpload(id){
     document.querySelector("#"+id).addEventListener("change",function(e){
         console.log(e.target.files.length)
@@ -33,8 +70,7 @@
         return;
       }
       let file = e.target.files[0];
-      let url = URL.createObjectURL(file);
-      images[id] = url;
+      const url = URL.createObjectURL(file);
       // document.querySelector("#"+id).innerText = file.name;
       document.getElementById(id+'_img').src = url;
     });

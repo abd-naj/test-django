@@ -51,3 +51,14 @@ body {
 .form .grid .form-element div span {
   font-size:40px;
 }
+div.dash-content > div > div > form > div > p{
+    margin-top: 20px;
+    display: flex;
+    place-content: space-between;
+    align-items: center;
+    flex-flow: row;
+}
+div.dash-content > div > div > form > div > p > p {
+    width: min-content !important;
+    padding: 0 0 0 50px !important;
+}
