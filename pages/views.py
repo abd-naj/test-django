@@ -108,8 +108,16 @@ def document(request):
             return redirect('document')
     else:
         form = HotelForm()
+
     return render(request, 'pages/document.html', {'form': form})
 
 
 def success(request):
     return HttpResponse('successfully uploaded')
+
+
+def display_images(request):
+    if request.method == 'GET':
+        # getting all the objects of hotel.
+        images = Document.objects.all()
+        return render(request, 'pages/document.html', {'doc_images': images})

@@ -15,12 +15,34 @@
         {{ form.as_p }}
         <button type="submit">Upload</button>
     </form>
- {% for hotel in hotel_images %}
-            <div class="col-md-4">
-                    {{ hotel.name }}
-                     <img src="{{ hotel.hotel_Main_Img.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
-            </div>
-    {% endfor %}
+   <div class="col-md-4">
+       <img id="id_imgper_img" src="{% static ''%}{{ images.id_imgper }}" class="img-responsive" style="width: 200px; float: left; margin-right: 10px;" />
+       <img id="id_imgid_img" src="{% static ''%}{{ images.id_imgid }}" class="img-responsive" style="width: 200px; float: left; margin-right: 10px;" />
+       <img id="id_imgcer_img" src="{% static ''%}{{ images.id_imgcer }}" class="img-responsive" style="width: 200px; float: left; margin-right: 10px;" />
+   </div>
+<script>
+    let id_imgper = 'image/profile.jpg';
+    let id_imgid = 'image/profile.jpg';
+    let id_imgcer = 'image/profile.jpg';
+    const images = {id_imgper: 'image/profile.jpg', id_imgid: 'image/profile.jpg', id_imgcer: 'image/profile.jpg'};
+    console.log(id_imgper)
+    function previewBeforeUpload(id){
+    document.querySelector("#"+id).addEventListener("change",function(e){
+        console.log(e.target.files.length)
+      if(e.target.files.length == 0){
+        return;
+      }
+      let file = e.target.files[0];
+      let url = URL.createObjectURL(file);
+      images[id] = url;
+      // document.querySelector("#"+id).innerText = file.name;
+      document.getElementById(id+'_img').src = url;
+    });
+  }
+  previewBeforeUpload('id_imgper')
+  previewBeforeUpload('id_imgid')
+  previewBeforeUpload('id_imgcer')
+</script>
 </body>
 </html>
 {% endblock content %}
