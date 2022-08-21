@@ -37,7 +37,7 @@ def contact(request):
         message = request.POST.get('message')
         x = Contact(phone=phone ,email=email ,name=name ,website=website ,message=message )
         x.save()
-
+        return redirect('academy')
     return render(request, "pages/contact.html")
 
 def academy(request):
@@ -50,6 +50,7 @@ def academy(request):
         certificatesource = request.POST.get('certificatesource')
         data = Academy(elementaryschool=elementaryschool ,certificatedate=certificatedate ,preparatoryschool=preparatoryschool ,modified=modified,highschool=highschool ,certificatesource=certificatesource)
         data.save()
+        return redirect('studentsdesirs')
     return render(request, "pages/academy.html")
 
 # def document(request):
@@ -105,7 +106,7 @@ def document(request):
 
         if form.is_valid():
             form.save()
-            return redirect('document')
+            return redirect('wishlist')
     else:
         form = HotelForm()
 
@@ -114,10 +115,3 @@ def document(request):
 
 def success(request):
     return HttpResponse('successfully uploaded')
-
-
-def display_images(request):
-    if request.method == 'GET':
-        # getting all the objects of hotel.
-        images = Document.objects.all()
-        return render(request, 'pages/document.html', {'doc_images': images})
